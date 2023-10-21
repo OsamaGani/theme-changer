@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <title>Night / Dark mode</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: sans-serif;
+            text-decoration: none;
+            box-sizing: border-box;
+        }
+
+        nav {
+            position: relative;
+            height: 60px;
+            width: 100%;
+            background: royalblue;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-inline: 30px;
+            box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        nav .logo {
+            color: white;
+            font-size: 25px;
+        }
+
+        nav .menu a {
+            color: white;
+            font-size: 20px;
+            padding-inline: 10px;
+        }
+
+        nav .icon {
+            color: white;
+            font-size: 30px;
+
+
+        }
+
+        nav .icon .light {
+            border: 2px solid black;
+            margin-inline: 10px;
+            padding: 3px 15px;
+            border: none;
+            background: rgb(104, 104, 245);
+            cursor: pointer;
+        }
+
+        nav .icon .change {
+            border: 2px solid black;
+            margin-inline: 10px;
+            padding: 3px 15px;
+            border: none;
+            background: rgb(104, 104, 245);
+            cursor: pointer;
+        }
+
+        .hero-section {
+            height: 91vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: rgb(222, 208, 237);
+        }
+
+        .hero-section .content {
+            width: 500px;
+            margin-left: 50px;
+
+        }
+
+        .hero-section .content h1 {
+            font-size: 35px;
+        }
+
+        .hero-section .content span {
+            color: blue;
+        }
+
+        .hero-section .content p {
+            font-size: 20px;
+            padding-top: 10px;
+        }
+
+        .hero-section .content button {
+            padding: 8px 17px;
+            font-size: 17px;
+            color: white;
+            background: blue;
+            border: none;
+            margin-top: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .icon .downarrow {
+            font-size: 17px;
+        }
+
+        .parent {
+            position: absolute;
+            width: 250px;
+            border: 2px solid black;
+            top: 63px;
+            right: 20px;
+            font-size: 20px;
+            padding-top: 15px;
+            background-color: white;
+            border-radius: 5px;
+            border: none;
+            color: crimson;
+            text-align: center;
+            box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+            display: none;
+
+        }
+
+        .parent .color-changer {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            margin: 10px 0;
+        }
+
+        .color-changer .blue,
+        .orange,
+        .purpole,
+        .crimson,
+        .green {
+            height: 30px;
+            width: 30px;
+            border: 2px solid black;
+            border-radius: 50%;
+            cursor: pointer;
+            border: none;
+            background-color: blue;
+        }
+
+        .color-changer .orange {
+            background-color: orange;
+        }
+
+        .color-changer .purpole {
+            background-color: purple;
+        }
+
+        .color-changer .green {
+            background-color: green;
+        }
+
+        .color-changer .crimson {
+            background-color: crimson;
+        }
+
+        .bar {
+            color: white;
+            font-size: 30px;
+            display: none;
+            border: 2px solid black;
+            padding: 3px 15px;
+            background: rgb(104, 104, 245);
+            border: none;
+        }
+
+
+        @media screen and (max-width:700px) {
+
+            .bar {
+                display: block;
+
+            }
+
+            .hero-section {
+                height: 88vh;
+                padding: 10px 15px;
+            }
+
+            .hero-section .content {
+                width: 100%;
+                margin: 0;
+            }
+
+            .hero-section .content p {
+                font-size: 18px;
+                text-align: justify;
+            }
+
+            .hero-section .content h1 {
+                font-size: 30px;
+            }
+
+            .menu {
+                display: none;
+            }
+
+            nav {
+                padding-inline: 10px;
+            }
+
+            .navbar {
+                position: relative;
+                
+            }
+
+            .menu {
+                position: absolute;
+                top: 60px;
+                height: 88vh;
+                width: 100%;
+                text-align: center;
+                right: 0;
+                background-color: crimson;
+                padding-top: 30px;              
+               
+            }
+            nav .menu a{
+                color:white;
+                font-size: 23px;
+                flex-direction: column;
+                display: flex;
+                padding:15px 0;
+                
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav id="navbar">
+        <div class="logo">
+            <h1>osm</h1>
+        </div>
+        <div class="menu">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Skills</a>
+            <a href="#">Services</a>
+            <a href="#">Contacts</a>
+        </div>
+        <div class="icon">
+            <span class="light"> <i class="fa-solid fa-moon" id="icon"></i></span>
+            <span class="change"><i class="fa-solid fa-palette"></i><i class="fa-solid fa-angle-down downarrow"
+                    id="icon2"></i></span>
+        </div>
+        <div class="bar">
+            <i class="fa-solid fa-bars " id="menu"></i>
+        </div>
+    </nav>
+    <section class="hero-section" id="body">
+        <div class="content" id="content">
+            <h1>Customise Your Website</h1>
+            <h1>With <span id="span">Beautiful Colors</span></h1>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illo aliquam dolor quaerat tempora suscipit
+                delectus, sit veniam reiciendis esse veritatis laboriosam quibusdam modi quam exercitationem dolores
+                ?</p>
+            <button id="button">Explore Me<i class="fa-solid fa-angles-right right"></i></button>
+        </div>
+    </section>
+
+    <div class="parent">
+        <div>
+            <h4>Color changer</h4>
+        </div>
+        <div class="color-changer">
+            <div class="blue" id="blue"></div>
+            <div class="orange" id="orange"></div>
+            <div class="crimson" id="crimson"></div>
+            <div class="purpole" id="purple"></div>
+            <div class="green" id="green"></div>
+        </div>
+    </div>
+    
+
+    <script>
+
+
+        let a = true;
+
+        let icon = document.getElementById("icon");
+        icon.addEventListener("click", function () {
+
+            if (a == true) {
+                document.getElementById("body").style.background = "#7a7977";
+                document.getElementById("button").style.background = "black";
+                document.getElementById("navbar").style.background = "black";
+                document.querySelector(".change").style.background = "black";
+                document.querySelector(".light").style.background = "black";
+                document.getElementById("span").style.color = "black";
+                icon.classList.replace("fa-moon", "fa-sun");
+                a = false;
+            }
+            else {
+                document.getElementById("body").style.background = "rgb(222, 208, 237)";
+                document.getElementById("navbar").style.background = "royalblue";
+                document.getElementById("button").style.background = "blue";
+                document.querySelector(".change").style.background = "rgb(104, 104, 245)";
+                document.querySelector(".light").style.background = "rgb(104, 104, 245)";
+                document.getElementById("span").style.color = "blue";
+                icon.classList.replace("fa-sun", "fa-moon");
+                a = true;
+            }
+        })
+
+        let x = true;
+        let icon2 = document.getElementById("icon2");
+        icon2.addEventListener("click", function () {
+            if (x == true) {
+                icon2.classList.replace('fa-angle-down', 'fa-angle-up');
+                document.querySelector(".parent").style.display = "block";
+                x = false;
+            }
+            else {
+                icon2.classList.replace('fa-angle-up', 'fa-angle-down');
+                document.querySelector(".parent").style.display = "none";
+                x = true;
+            }
+        })
+        let blue = document.getElementById("blue");
+        blue.addEventListener("click", function () {
+            document.querySelector(".parent").style.display = "none";
+            icon2.classList.replace('fa-angle-up', 'fa-angle-down');
+            document.getElementById("navbar").style.background = "blue";
+            document.getElementById("body").style.background = "rgb(222, 208, 237)";
+            document.getElementById("span").style.color = "blue";
+            document.getElementById("button").style.background = "blue";
+            document.querySelector(".change").style.background = "rgb(104, 104, 245)";
+            document.querySelector(".light").style.background = "rgb(104, 104, 245)";
+            document.querySelector(".bar").style.background = "rgb(104, 104, 245)";
+
+
+        })
+
+        let orange = document.getElementById("orange");
+        orange.addEventListener("click", function () {
+            icon2.classList.replace('fa-angle-up', 'fa-angle-down')
+            document.getElementById("navbar").style.background = "orange";
+            document.getElementById("body").style.background = "#ede29d";
+            document.getElementById("span").style.color = "orange";
+            document.getElementById("button").style.background = "orange";
+            document.querySelector(".parent").style.display = "none";
+            document.querySelector(".change").style.background = "#f7b968";
+            document.querySelector(".light").style.background = "#f7b968";
+            document.querySelector(".bar").style.background = "#f7b968";
+
+        })
+
+        let crimson = document.getElementById("crimson");
+        crimson.addEventListener("click", function () {
+            icon2.classList.replace('fa-angle-up', 'fa-angle-down')
+            document.getElementById("navbar").style.background = "crimson";
+            document.getElementById("body").style.background = "#fcc2c7";
+            document.getElementById("span").style.color = "crimson";
+            document.getElementById("button").style.background = "crimson";
+            document.querySelector(".parent").style.display = "none";
+            document.querySelector(".change").style.background = "crimson";
+            document.querySelector(".light").style.background = "crimson";
+            document.querySelector(".bar").style.background = "crimson";
+
+        })
+
+        let purple = document.getElementById("purple");
+        purple.addEventListener("click", function () {
+            icon2.classList.replace('fa-angle-up', 'fa-angle-down')
+            document.getElementById("navbar").style.background = "purple";
+            document.getElementById("body").style.background = "#e9c0f0";
+            document.getElementById("span").style.color = "purple";
+            document.getElementById("button").style.background = "purple";
+            document.querySelector(".parent").style.display = "none";
+            document.querySelector(".change").style.background = "purple";
+            document.querySelector(".light").style.background = "purple";
+            document.querySelector(".bar").style.background = "purple";
+
+        })
+
+
+        let green = document.getElementById("green");
+        green.addEventListener("click", function () {
+            icon2.classList.replace('fa-angle-up', 'fa-angle-down')
+            document.getElementById("navbar").style.background = "green";
+            document.getElementById("body").style.background = "#8df7a2";
+            document.getElementById("span").style.color = "#09d632";
+            document.getElementById("button").style.background = "#09d632";
+            document.querySelector(".parent").style.display = "none";
+            document.querySelector(".change").style.background = "#09d632";
+            document.querySelector(".light").style.background = "#09d632";
+            document.querySelector(".bar").style.background = "#09d632";
+
+        })
+        let guffu = true;
+        let menu = document.getElementById("menu");
+        menu.addEventListener("click", function () {
+            if (guffu == true) {
+                menu.classList.replace('fa-bars', 'fa-xmark');
+                document.querySelector(".menu").style.display="block";
+                // document.querySelector(".menu").style.transition="all 2s";
+                guffu = false;
+            }
+            else {
+                menu.classList.replace('fa-xmark', 'fa-bars');
+                document.querySelector(".menu").style.display="none";
+                // document.querySelector(".menu").style.transition="all 1.9s";
+                guffu = true;
+            }
+        })
+
+    </script>
+</body>
+
+</html>
